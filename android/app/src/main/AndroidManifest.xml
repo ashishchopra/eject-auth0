@@ -64,7 +64,7 @@
       android:name=".experience.ExperienceActivity"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
       android:theme="@style/Theme.Exponent.Light"
-      android:windowSoftInputMode="adjustResize">
+      android:windowSoftInputMode="adjustPan">
     </activity>
 
     <activity
@@ -72,7 +72,7 @@
       android:launchMode="singleTask"
       android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
       android:theme="@style/Theme.Exponent.Splash"
-      android:windowSoftInputMode="adjustResize">
+      android:windowSoftInputMode="adjustPan'5">
       <intent-filter>
         <data android:scheme="exp5b06ca53e9114bf0bc987bdf5ae19343"
               android:host="mpowered-demo.auth0.com"

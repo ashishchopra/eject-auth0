@@ -24,7 +24,7 @@ export default class LoginForm extends Component {
         if (!this.state.password.length) {
             passwordError = true
         }
-        this.setState({usernameError: usernameError, passwordError: passwordError})
+        this.setState({ usernameError: usernameError, passwordError: passwordError })
         if (usernameError === false && passwordError === false) {
             this.props.realmLogin(this.state.username, this.state.password)
         }
@@ -57,6 +57,7 @@ export default class LoginForm extends Component {
                         onChangeText={(text) => this.setState({ password: text.trim() })}
                     />
                 </View>
+
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity
                         onPress={() => this.validateLogin()}
@@ -85,7 +86,8 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: '#333333',
         paddingHorizontal: 10,
-        borderColor: '#eaeaea',
+        borderColor: '#fff',
+        borderBottomColor: '#f5f4f8',
         borderWidth: 1.0
     },
     inputError: {

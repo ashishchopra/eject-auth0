@@ -12,6 +12,10 @@ import {
 import Auth0 from 'react-native-auth0';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import LoginTabs from './LoginTabs';
+import getTheme from '../native-base-theme/components'
+import material from '../native-base-theme/variables/material';
+import { Tabs, Tab, StyleProvider, Container } from 'native-base';
 
 import { SecureStore } from 'expo';
 
@@ -74,8 +78,8 @@ export default class Login extends Component {
                 console.log(success)
                 this.alert('Success', 'New user created')
             })
-            .catch(error => { 
-                this.alert('Error', error.json.description) 
+            .catch(error => {
+                this.alert('Error', error.json.description)
             });
     }
 
@@ -100,28 +104,44 @@ export default class Login extends Component {
             form = <SignupForm createUser={this.createUser} />;
         }
         return (
-            <KeyboardAvoidingView behavior="padding" style={styles.container}>
-                <View style={styles.headerContainer}>
-                    <Image
-                        style={styles.logo}
-                        source={require('../images/rsz_2icon_color.png')}
-                    />
-                    <Text style={styles.title}>mPowered</Text>
-                </View>
-                <View style={styles.tabContainer}>
-                <Button
-                    onPress={() => this.setState({viewLogin: true})}
-                    title="Log In"
-                />
-                <Button
-                    onPress={() => this.setState({viewLogin: false})}
-                    title="Sign up"
-                />
-                </View>
-                <View style={styles.formContainer}>
-                    {form}
-                </View>
-            </KeyboardAvoidingView>
+
+            <StyleProvider style={getTheme(material)}>
+                <Container>
+                    <View style={styles.headerContainer}>
+                        <Image
+                            style={styles.logo}
+                            source={require('../images/rsz_2icon_color.png')}
+                        />
+                        <Text style={styles.title}>mPowered</Text>
+                    </View>
+
+
+                    <Tabs onChangeTab={() => this.setState({ viewLogin: !this.state.viewLogin })} >
+                        <Tab heading="Log In">
+                        </Tab>
+                        <Tab heading="Sign Up" >
+                        </Tab>
+                    </Tabs>
+
+                    <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'center', height: 30 }}>
+                        <Image
+                            style={{ height: 55, width: 55 }}
+                            source={require('../images/facebook.png')} />
+                        <Image
+                            style={{ height: 55, width: 55,paddingLeft:5 }}
+                            source={require('../images/google.png')} />
+                    </View>
+                    <View>
+                        <Text style={{ textAlign: 'center' }}>
+                            or
+                        </Text>
+                    </View>
+                    <View style={styles.formContainer}>
+                        {form}
+                    </View>
+                </Container>
+            </StyleProvider>
+
         );
     }
 }
@@ -132,11 +152,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff'
     },
     formContainer: {
-        flex: 2,
+        flex: 4,
     },
     headerContainer: {
-        flex: 1,
-        marginTop: 20,
+        flex: 2,
+        marginTop: 14,
         alignItems: 'center',
         backgroundColor: '#eeeeee',
         justifyContent: 'center',

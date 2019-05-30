@@ -11,12 +11,13 @@ export default class SignupForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        email: "",
-        username: "",
-        password: "",
-        emailError: false,
-        usernameError: false,
-        passwordError: false }
+            email: "",
+            username: "",
+            password: "",
+            emailError: false,
+            usernameError: false,
+            passwordError: false
+        }
     }
 
     validateSignup = () => {
@@ -38,7 +39,8 @@ export default class SignupForm extends Component {
         this.setState({
             usernameError: usernameError,
             emailError: emailError,
-            passwordError: passwordError})
+            passwordError: passwordError
+        })
         if (usernameError === false, emailError === false && passwordError === false) {
             this.props.createUser(this.state.email, this.state.username, this.state.password)
         }
@@ -110,7 +112,8 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         color: '#333333',
         paddingHorizontal: 10,
-        borderColor: '#eaeaea',
+        borderColor: '#fff',
+        borderBottomColor: '#f5f4f8',
         borderWidth: 1.0
     },
     inputError: {
